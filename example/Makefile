@@ -1,19 +1,14 @@
-#pragma once
+LDFLAGS=-lrt -lpcap -lpthread
+CPPFLAGS=-Wall -O0 -D _GNU_SOURCE -I..
+CFLAGS := $(CFLAGS)
 
-#include "../public/render_engine_ui.h"
-#include "../public/telemetry_info.h"
-#include "../public/settings_info.h"
+all: usb_camera_plugin
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+%.o: %.cpp
+	g++ $(CFLAGS) -c -o $@ $< $(CPPFLAGS)  # Use g++ instead of gcc
 
-void init(void* pEngine);
-char* getName();
-char* getUID();
-void render(vehicle_and_telemetry_info_t* pTelemetryInfo, plugin_settings_info_t2* pCurrentSettings, float xPos, float yPos, float fWidth, float fHeight);
-void cleanup();
+usb_camera_plugin: usb_camera_plugin.o
+	g++ usb_camera_plugin.o -shared -Wl,-soname,usb_camera_plugin.so.1 -o usb_camera_plugin.so.1.0.1 -lc
 
-#ifdef __cplusplus
-}
-#endif
+clean:
+	rm -f usb_camera_plugin.so.* *.o
