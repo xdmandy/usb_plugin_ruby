@@ -5,9 +5,9 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <linux/videodev2.h>
-#include "../sdk/render_engine_ui.h"
-#include "../sdk/telemetry_info.h"
-#include "../sdk/settings_info.h"
+#include "../render_engine_ui.h"
+#include "../telemetry_info.h"
+#include "../settings_info.h"
 #include "usb_camera_plugin.h"
 
 #define CAMERA_DEVICE "/dev/video0"
