@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../public/render_engine_ui.h"
-#include "../public/telemetry_info.h"
-#include "../public/settings_info.h"
+#include "../render_engine_ui.h"
+#include "../telemetry_info.h"
+#include "../settings_info.h"
 
 #ifdef __cplusplus
 extern "C" {
